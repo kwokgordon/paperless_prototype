@@ -7,6 +7,8 @@ import { HomeComponent } from './home.component';
 import { SearchComponent } from './search.component';
 import { UploadComponent } from './upload.component';
 
+import { UploadFieldService } from './upload-field.service';
+
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
@@ -21,7 +23,7 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [UploadFieldService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

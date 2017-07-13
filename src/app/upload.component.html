@@ -1,1 +1,81 @@
-Upload
+<h2>Upload</h2>
+
+<div class="input">
+  <label>Line Of Business:</label>
+  <select>
+    <option *ngFor="let lob of lobs"
+      (click)="onLOBSelect(lob)"
+      value="lob.id">
+        {{lob.name}}
+    </option>
+  </select>
+</div>
+
+<div class="input">
+  <label>Status:</label>
+  <select>
+    <option *ngFor="let status of statuses"
+      (click)="onStatusSelect(status)"
+      value="status.id">
+        {{status.name}}
+    </option>
+  </select>
+</div>
+
+<div class="input">
+  <label>Quote Number:</label>
+  <input />
+</div>
+
+<div class="input">
+  <label>Name Insured:</label>
+  <input />
+</div>
+
+<div class="input">
+  <label>Document Type:</label>
+  <select>
+    <option value="dummy">Dummy</option>
+  </select>
+</div>
+
+<div class="input">
+  <label>Category:</label>
+  <select>
+    <option value="dummy">Dummy</option>
+  </select>
+</div>
+
+<div class="input">
+  <label>Received Date:</label>
+  <input type="date" />
+</div>
+
+<div class="input">
+  <label>User:</label>
+  <input />
+</div>
+
+<div class="input">
+  <label>Title:</label>
+  <input />
+</div>
+
+<div class="input">
+  <label>Broker:</label>
+  <input />
+</div>
+
+<div class="input">
+  <label>Effective Date:</label>
+  <input type="date" />
+</div>
+
+<div class="input">
+  <label>Expiry Date:</label>
+  <input type="date" />
+</div>
+
+<div class="input">
+  <button>Upload Now</button>
+</div>
