@@ -1,0 +1,30 @@
+.left-bar {
+  height: 100%; /* 100% Full-height */
+  width: 20%;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #AAA;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 0;
+  padding-left: 0;
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+
+}
+
+.left-bar > ul {
+  list-style: none;
+}
+
+.left-bar > ul >li {
+  font-size: 16pt;
+  margin: 20pt 0;
+}
+
+.right-area {
+  height: 100%;
+  width: 80%;
+  float: right;
+  background-color: #BBB;
+}
