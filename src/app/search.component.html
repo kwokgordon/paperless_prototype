@@ -1,1 +1,388 @@
-Search
+<h2>Search</h2>
+
+<div class="input">
+  <label>General Search:</label>
+  <input placeholder="Search" />
+</div>
+
+<div class="input">
+  <label>Line Of Business:</label>
+  <select #ls (change)="onLOBSelect(ls.value)">
+    <option *ngFor="let lob of lobs"
+      value="{{lob.id}}">
+        {{lob.name}}
+    </option>
+  </select>
+</div>
+
+<div class="input">
+  <label>Status:</label>
+  <select #ss (change)="onStatusSelect(ss.value)">
+    <option *ngFor="let status of statuses"
+      value="{{status.id}}">
+        {{status.name}}
+    </option>
+  </select>
+</div>
+
+<div>
+<!--
+<div *ngIf="selectedLOB==1 && selectedStatus==1">
+-->
+  <div class="input">
+    <label>Quote Number:</label>
+    <input placeholder="Search" />
+  </div>
+
+  <div class="input">
+    <label>Name Insured:</label>
+    <input placeholder="Search" />
+  </div>
+
+  <div class="input">
+    <label>Document Type:</label>
+    <select>
+      <option value="dummy1">Dummy1</option>
+      <option value="dummy2">Dummy2</option>
+      <option value="dummy3">Dummy3</option>
+    </select>
+  </div>
+
+  <div class="input">
+    <label>Document Sub-Type:</label>
+    <select>
+      <option value="dummy1">Dummy1</option>
+      <option value="dummy2">Dummy2</option>
+      <option value="dummy3">Dummy3</option>
+    </select>
+  </div>
+
+  <div class="input">
+    <label>Received Date:</label>
+    <input type="date" />
+  </div>
+
+  <div class="input">
+    <label>User:</label>
+    <input />
+  </div>
+
+  <div class="input">
+    <label>Title:</label>
+    <input />
+  </div>
+
+  <div class="input">
+    <label>Effective Date:</label>
+    <input type="date" />
+  </div>
+
+  <div class="input">
+    <label>Expiry Date:</label>
+    <input type="date" />
+  </div>
+
+  <div class="input">
+    <label>Select Files:</label>
+    <div class="left" ng2FileDrop
+          [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+          (fileOver)="fileOverBase($event)"
+          (onFileDrop)= "oneFileOnly($event)"
+          [uploader]="uploader"
+          class="well my-drop-zone">
+         {{fileDescription}}
+     </div>
+  </div>
+
+  <!--<div>
+    <div class="block" style="width:100px">Name</div>
+    <div class="block" width="80px">Size</div>
+    <div class="block">Progress</div>
+  </div>
+
+     <div *ngFor="let item of uploader.queue">
+      <div class="block" style="width:100px">{{ item?.file?.name }}</div>
+      <div class="block" style="width:80px">{{ item?.file?.size/1024/1024 | number:'.2' }} MB</div>
+      <div>
+           <div class="progress" style="margin-bottom: 0;">
+               <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+           </div>
+       </div>
+  </div>-->
+
+  <div class="input">
+    <button (click)="uploadAll()">Upload Now</button>
+  </div>
+</div>
+
+
+
+<div *ngIf="selectedLOB==1 && selectedStatus==2">
+  <div class="input">
+    <label>Policy Number:</label>
+    <input />
+  </div>
+
+  <div class="input">
+    <label>Name Insured:</label>
+    <input />
+  </div>
+
+  <div class="input">
+    <label>Document Type:</label>
+    <select>
+      <option value="dummy">Dummy</option>
+    </select>
+  </div>
+
+  <div class="input">
+    <label>Document Sub-Type:</label>
+    <select>
+      <option value="dummy">Dummy</option>
+    </select>
+  </div>
+
+  <div class="input">
+    <label>Effective Date:</label>
+    <input type="date" />
+  </div>
+
+  <div class="input">
+    <label>Expiry Date:</label>
+    <input type="date" />
+  </div>
+
+  <div class="input">
+    <label>Received Date:</label>
+    <input type="date" />
+  </div>
+
+  <div class="input">
+    <label>User:</label>
+    <input />
+  </div>
+
+  <div class="input">
+    <label>Title:</label>
+    <input />
+  </div>
+
+  <div class="input">
+    <label>Effective Date of Change:</label>
+    <input type="date" />
+  </div>
+
+  <div class="input">
+    <label>Program:</label>
+    <select>
+      <option value="dummy">Dummy</option>
+    </select>
+  </div>
+
+  <div class="input">
+    <label>Select Files:</label>
+    <div class="left" ng2FileDrop
+          [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+          (fileOver)="fileOverBase($event)"
+          (onFileDrop)= "oneFileOnly($event)"
+          [uploader]="uploader"
+          class="well my-drop-zone">
+         {{fileDescription}}
+     </div>
+  </div>
+
+  <!--<div>
+    <div class="block" style="width:100px">Name</div>
+    <div class="block" width="80px">Size</div>
+    <div class="block">Progress</div>
+  </div>
+
+     <div *ngFor="let item of uploader.queue">
+      <div class="block" style="width:100px">{{ item?.file?.name }}</div>
+      <div class="block" style="width:80px">{{ item?.file?.size/1024/1024 | number:'.2' }} MB</div>
+      <div>
+           <div class="progress" style="margin-bottom: 0;">
+               <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+           </div>
+       </div>
+  </div>-->
+
+  <div class="input">
+    <button (click)="uploadAll()">Upload Now</button>
+  </div>
+</div>
+
+
+
+<div *ngIf="selectedLOB==2 && selectedStatus==1">
+  <div class="input">
+    <label>Quote Number:</label>
+    <input />
+  </div>
+
+  <div class="input">
+    <label>Name Insured:</label>
+    <input />
+  </div>
+
+  <div class="input">
+    <label>Document Type:</label>
+    <select>
+      <option value="dummy">Dummy</option>
+    </select>
+  </div>
+
+  <div class="input">
+    <label>Document Sub-Type:</label>
+    <select>
+      <option value="dummy">Dummy</option>
+    </select>
+  </div>
+
+  <div class="input">
+    <label>User:</label>
+    <input />
+  </div>
+
+  <div class="input">
+    <label>Title:</label>
+    <input />
+  </div>
+
+  <div class="input">
+    <label>Received Date:</label>
+    <input type="date" />
+  </div>
+
+  <div class="input">
+    <label>Effective Date:</label>
+    <input type="date" />
+  </div>
+
+  <div class="input">
+    <label>Expiry Date:</label>
+    <input type="date" />
+  </div>
+
+  <div class="input">
+    <label>Select Files:</label>
+    <div class="left" ng2FileDrop
+          [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+          (fileOver)="fileOverBase($event)"
+          (onFileDrop)= "oneFileOnly($event)"
+          [uploader]="uploader"
+          class="well my-drop-zone">
+         {{fileDescription}}
+     </div>
+  </div>
+
+  <!--<div>
+    <div class="block" style="width:100px">Name</div>
+    <div class="block" width="80px">Size</div>
+    <div class="block">Progress</div>
+  </div>
+
+     <div *ngFor="let item of uploader.queue">
+      <div class="block" style="width:100px">{{ item?.file?.name }}</div>
+      <div class="block" style="width:80px">{{ item?.file?.size/1024/1024 | number:'.2' }} MB</div>
+      <div>
+           <div class="progress" style="margin-bottom: 0;">
+               <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+           </div>
+       </div>
+  </div>-->
+
+  <div class="input">
+    <button (click)="uploadAll()">Upload Now</button>
+  </div>
+</div>
+
+
+
+<div *ngIf="selectedLOB==2 && selectedStatus==2">
+  <div class="input">
+    <label>Policy Number:</label>
+    <input />
+  </div>
+
+  <div class="input">
+    <label>Name Insured:</label>
+    <input />
+  </div>
+
+  <div class="input">
+    <label>Document Type:</label>
+    <select>
+      <option value="dummy">Dummy</option>
+    </select>
+  </div>
+
+  <div class="input">
+    <label>Document Sub-Type:</label>
+    <select>
+      <option value="dummy">Dummy</option>
+    </select>
+  </div>
+
+  <div class="input">
+    <label>User:</label>
+    <input />
+  </div>
+
+  <div class="input">
+    <label>Title:</label>
+    <input />
+  </div>
+
+  <div class="input">
+    <label>Effective Date:</label>
+    <input type="date" />
+  </div>
+
+  <div class="input">
+    <label>Expiry Date:</label>
+    <input type="date" />
+  </div>
+
+  <div class="input">
+    <label>Received Date:</label>
+    <input type="date" />
+  </div>
+
+  <div class="input">
+    <label>Effective Date of Change:</label>
+    <input type="date" />
+  </div>
+
+  <div class="input">
+    <label>Select Files:</label>
+    <div class="left" ng2FileDrop
+          [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+          (fileOver)="fileOverBase($event)"
+          (onFileDrop)= "oneFileOnly($event)"
+          [uploader]="uploader"
+          class="well my-drop-zone">
+         {{fileDescription}}
+     </div>
+  </div>
+
+  <!--<div>
+    <div class="block" style="width:100px">Name</div>
+    <div class="block" width="80px">Size</div>
+    <div class="block">Progress</div>
+  </div>
+
+     <div *ngFor="let item of uploader.queue">
+      <div class="block" style="width:100px">{{ item?.file?.name }}</div>
+      <div class="block" style="width:80px">{{ item?.file?.size/1024/1024 | number:'.2' }} MB</div>
+      <div>
+           <div class="progress" style="margin-bottom: 0;">
+               <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+           </div>
+       </div>
+  </div>-->
+
+  <div class="input">
+    <button (click)="uploadAll()">Upload Now</button>
+  </div>
+</div>

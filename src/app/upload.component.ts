@@ -36,7 +36,12 @@ export class UploadComponent implements OnInit {
   }
 
   getLOBS(): void {
-    this.uploadFieldService.getLOBS().then(lobs => this.lobs = lobs);
+    this.uploadFieldService.getLOBS().then(lobs => {
+      this.lobs = lobs;
+      if (lobs.length > 0) {
+        this.selectedLOB = lobs[0];
+      }
+    });
   }
 
   onLOBSelect(lob: LOB): void {
@@ -44,7 +49,12 @@ export class UploadComponent implements OnInit {
   }
 
   getStatuses(): void {
-    this.uploadFieldService.getStatuses().then(statuses => this.statuses = statuses);
+    this.uploadFieldService.getStatuses().then(statuses => {
+      this.statuses = statuses;
+      if (statuses.length > 0) {
+        this.selectedStatus = statuses[0];
+      }
+    });
   }
 
   onStatusSelect(status: Status): void {

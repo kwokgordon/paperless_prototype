@@ -2,6 +2,7 @@ import { LOB } from './line-of-business';
 import { Status } from './status';
 
 export const LOBS: LOB[] = [
+  { id: 0, name: '-- Select Line of Business --'},
   { id: 1, name: 'P&C'},
   { id: 2, name: 'Auto'},
   { id: 3, name: 'Specialty - Tech'},
@@ -14,6 +15,7 @@ export const LOBS: LOB[] = [
 
 
 export const Statuses: Status[] = [
+  { id: 0, name: '-- Select Status --'},
   { id: 1, name: 'New'},
   { id: 2, name: 'Existing'}
 ];
