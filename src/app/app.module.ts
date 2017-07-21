@@ -10,6 +10,8 @@ import { UploadComponent } from './upload.component';
 import { UploadFieldService } from './upload-field.service';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HomeService } from './home-service';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,10 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FileUploadModule
   ],
-  providers: [UploadFieldService],
+  providers: [UploadFieldService, HomeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

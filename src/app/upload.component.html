@@ -2,10 +2,9 @@
 
 <div class="input">
   <label>Line Of Business:</label>
-  <select>
+  <select #ls (change)="onLOBSelect(ls.value)">
     <option *ngFor="let lob of lobs"
-      (click)="onLOBSelect(lob)"
-      value="lob.id">
+      value="{{lob.name}}">
         {{lob.name}}
     </option>
   </select>
@@ -77,5 +76,33 @@
 </div>
 
 <div class="input">
-  <button>Upload Now</button>
+  <label>Select Files:</label>
+  <div class="left" ng2FileDrop
+        [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+        (fileOver)="fileOverBase($event)" 
+        (onFileDrop)= "oneFileOnly($event)"
+        [uploader]="uploader"
+        class="well my-drop-zone">
+       {{fileDescription}}
+   </div>
+</div>
+
+<!--<div>
+  <div class="block" style="width:100px">Name</div>
+  <div class="block" width="80px">Size</div>
+  <div class="block">Progress</div>
+</div>
+
+   <div *ngFor="let item of uploader.queue">
+    <div class="block" style="width:100px">{{ item?.file?.name }}</div>
+    <div class="block" style="width:80px">{{ item?.file?.size/1024/1024 | number:'.2' }} MB</div>
+    <div>
+         <div class="progress" style="margin-bottom: 0;">
+             <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+         </div>
+     </div>
+</div>-->
+
+<div class="input">
+  <button (click)="uploadAll()">Upload Now</button>
 </div>

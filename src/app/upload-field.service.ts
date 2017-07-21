@@ -1,5 +1,5 @@
-import { LOB } from './line-of-business'
-import { Status } from './status'
+import { LOB } from './line-of-business';
+import { Status } from './status';
 import { LOBS, Statuses } from './mock-upload-fields';
 import { Injectable } from '@angular/core';
 

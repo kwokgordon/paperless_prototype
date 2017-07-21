@@ -1,5 +1,5 @@
-import { LOB } from './line-of-business'
-import { Status } from './status'
+import { LOB } from './line-of-business';
+import { Status } from './status';
 
 export const LOBS: LOB[] = [
   { id: 1, name: 'P&C'},

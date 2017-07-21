@@ -1,1 +1,63 @@
-Home
+<div class="home-page">
+	<div>&nbsp;</div>
+	<div class="home-greeting">
+		<div class="right-align"><a href="#">(logout) {{fullName}}</a></div>
+		<div class="display-name">Welcome {{firstName}} !</div>
+		<div>&nbsp;</div>
+		<div class="right-align"><a href="#">En</a> / <a href="#">Fr</a></div>
+		<div class="small-padding">&nbsp;</div>
+	</div>
+	<div class="announcement-area">
+		<div class="announcement-title">ANNOUNCEMENTS</div>
+		<div class="announcement">
+			<div *ngFor="let announcement of announcements">
+			    <div class="announcement-line">
+			      {{announcement.description}}
+			    </div>
+			</div>
+		</div>
+	</div><br>
+	<div class="rTable">
+	  <div class="left">
+	  	<div class="item-title">5 Most Recent Searches</div>
+	  	<div>&nbsp;</div>
+	  	<div class="small-padding" *ngFor="let search of recentSearches">
+		    <a class="item-line" href="#">
+		      {{search.description}}
+		    </a>
+		</div>
+	  </div>
+
+	  
+	  <div class="right">
+	  	<div class="top-table">
+		  	<div class="item-title small-padding">Quick Search Launch</div>
+		  	<select class="select-w-180" #qs (change)="onQSSelect(qs.value)">
+			    <option *ngFor="let lob of lobs" value="{{lob.name}}" attr.data-selected="{{lob.name}}">
+			        {{lob.name}}
+			    </option>
+		    </select>
+		</div>
+		<div class="bottom-table">
+		  	<div class="item-title small-padding">Quick Upload Launch</div>
+		  	<select class="select-w-180" #qu (change)="onULSelect(qu.value)">
+			    <option *ngFor="let lob of lobs"
+			      value="{{lob.name}}">
+			        {{lob.name}}
+			    </option>
+		    </select>
+		</div>
+	  </div>
+	  
+	  <div class="center">
+	  	<div class="item-title">5 Most Recent Uploads</div>
+	  	<div>&nbsp;</div>
+	  	<div class="small-padding" *ngFor="let upload of recentUploads">
+		    <a class="item-line" href="#">
+		      {{upload.description}}
+		    </a>
+		</div>
+	  </div>
+	  
+	</div>
+</div>
