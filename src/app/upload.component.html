@@ -2,9 +2,8 @@
 
 <div class="input">
   <label>Line Of Business:</label>
-  <select #ls (change)="onLOBSelect(ls.value)">
-    <option *ngFor="let lob of lobs"
-      value="{{lob.id}}">
+  <select [(ngModel)]="newUploadObj.lob">
+    <option *ngFor="let lob of lobs" [ngValue]="lob">
         {{lob.name}}
     </option>
   </select>
@@ -12,18 +11,17 @@
 
 <div class="input">
   <label>Status:</label>
-  <select #ss (change)="onStatusSelect(ss.value)">
-    <option *ngFor="let status of statuses"
-      value="{{status.id}}">
+  <select [(ngModel)]="newUploadObj.status">
+    <option *ngFor="let status of statuses" [ngValue]="status">
         {{status.name}}
     </option>
   </select>
 </div>
 
-<div *ngIf="selectedLOB==1 && selectedStatus==1">
+<div *ngIf="newUploadObj.lob?.id===1 &&  newUploadObj.status?.id === 1">
   <div class="input">
     <label>Quote Number:</label>
-    <input />
+    <input [(ngModel)]="newUploadObj.quoteNumber" />
   </div>
 
   <div class="input">
@@ -87,7 +85,6 @@
     <div class="block" width="80px">Size</div>
     <div class="block">Progress</div>
   </div>
-
      <div *ngFor="let item of uploader.queue">
       <div class="block" style="width:100px">{{ item?.file?.name }}</div>
       <div class="block" style="width:80px">{{ item?.file?.size/1024/1024 | number:'.2' }} MB</div>
@@ -105,7 +102,7 @@
 
 
 
-<div *ngIf="selectedLOB==1 && selectedStatus==2">
+<div *ngIf="newUploadObj.lob?.id === 1 && newUploadObj.status?.id === 2">
   <div class="input">
     <label>Policy Number:</label>
     <input />
@@ -184,7 +181,6 @@
     <div class="block" width="80px">Size</div>
     <div class="block">Progress</div>
   </div>
-
      <div *ngFor="let item of uploader.queue">
       <div class="block" style="width:100px">{{ item?.file?.name }}</div>
       <div class="block" style="width:80px">{{ item?.file?.size/1024/1024 | number:'.2' }} MB</div>
@@ -202,10 +198,10 @@
 
 
 
-<div *ngIf="selectedLOB==2 && selectedStatus==1">
+<div *ngIf="newUploadObj.lob?.id === 2 && newUploadObj.status?.id === 1">
   <div class="input">
     <label>Quote Number:</label>
-    <input />
+    <input [(ngModel)]="newUploadObj.quoteNumber" />
   </div>
 
   <div class="input">
@@ -269,7 +265,6 @@
     <div class="block" width="80px">Size</div>
     <div class="block">Progress</div>
   </div>
-
      <div *ngFor="let item of uploader.queue">
       <div class="block" style="width:100px">{{ item?.file?.name }}</div>
       <div class="block" style="width:80px">{{ item?.file?.size/1024/1024 | number:'.2' }} MB</div>
@@ -287,7 +282,7 @@
 
 
 
-<div *ngIf="selectedLOB==2 && selectedStatus==2">
+<div *ngIf="newUploadObj.lob?.id === 2 && newUploadObj.status?.id === 2">
   <div class="input">
     <label>Policy Number:</label>
     <input />
@@ -359,7 +354,6 @@
     <div class="block" width="80px">Size</div>
     <div class="block">Progress</div>
   </div>
-
      <div *ngFor="let item of uploader.queue">
       <div class="block" style="width:100px">{{ item?.file?.name }}</div>
       <div class="block" style="width:80px">{{ item?.file?.size/1024/1024 | number:'.2' }} MB</div>

@@ -12,6 +12,8 @@ import { UploadFieldService } from './upload-field.service';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeService } from './home-service';
 import { FileUploadModule } from 'ng2-file-upload';
+import { HttpModule } from '@angular/http';
+import { saveAs } from 'file-saver';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    FileUploadModule
+    FileUploadModule,
+    HttpModule
   ],
   providers: [UploadFieldService, HomeService],
   bootstrap: [AppComponent]

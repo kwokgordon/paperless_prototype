@@ -5,8 +5,10 @@ import { Status } from './status';
 import { UploadFieldService } from './upload-field.service';
 import { FileUploader } from 'ng2-file-upload';
 import { FileUploaderExtend } from './fileuploaderextend';
+import { NewUpload } from './newupload';
 
-const URL = 'https://requestb.in/1f1v8831';
+const URL = 'http://127.0.0.1:8080/api/new/';
+// const URL = 'https://requestb.in/1hz3jfk1';
 
 @Component({
   selector: 'upload',
@@ -17,10 +19,9 @@ const URL = 'https://requestb.in/1f1v8831';
 export class UploadComponent implements OnInit {
   fileDescription = 'Drop your file here';
   lobs: LOB[];
-  selectedLOB: LOB;
+  newUploadObj: NewUpload = new NewUpload();
 
   statuses: Status[];
-  selectedStatus: Status;
 
   // uploader: FileUploaderExtend;
   uploader: FileUploader =  new FileUploader ({url: URL});
@@ -39,26 +40,18 @@ export class UploadComponent implements OnInit {
     this.uploadFieldService.getLOBS().then(lobs => {
       this.lobs = lobs;
       if (lobs.length > 0) {
-        this.selectedLOB = lobs[0];
+        this.newUploadObj.lob = lobs[0];
       }
     });
-  }
-
-  onLOBSelect(lob: LOB): void {
-    this.selectedLOB = lob;
   }
 
   getStatuses(): void {
     this.uploadFieldService.getStatuses().then(statuses => {
       this.statuses = statuses;
       if (statuses.length > 0) {
-        this.selectedStatus = statuses[0];
+        this.newUploadObj.status = statuses[0];
       }
     });
-  }
-
-  onStatusSelect(status: Status): void {
-    this.selectedStatus = status;
   }
 
   fileOverBase(e: any): void {
@@ -83,8 +76,9 @@ export class UploadComponent implements OnInit {
 
   prepareUploadData(): void {
     this.uploader.onBuildItemForm = (item, form) => {
-      if (this.selectedLOB != null ) {
-        form.append('lob', this.selectedLOB);
+      if (this.newUploadObj != null ) {
+        form.append('uploadData', JSON.stringify(this.newUploadObj));
+        form.append('uploadTimeInMilli', new Date().getTime());
       }
     };
   }
